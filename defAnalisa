@@ -1,0 +1,39 @@
+    def analisa(self):
+        for ch in self.li:
+
+            if ch in self.ch_especial:
+                if len(self.palavra) > 0:
+                    if ch in self.palavra:
+                        self.palavra.append(ch)
+                    try:
+                        self.tipo = Tipo(''.join(self.palavra))
+                    except:
+                        if ''.join(self.palavra).isnumeric():
+                            self.tipo = Tipo('digitos')
+                        else:
+                            self.tipo = Tipo('indentifier')
+                    tk = Token(tipo=self.tipo, lexema=''.join(self.palavra), linha=self.linha,
+                               coluna=self.coluna - len(self.palavra))
+                    self.token.append(tk)
+                    print(tk)
+                    if self.palavra == ['&', '&']:
+                        ch = ''
+                    self.palavra.clear()
+
+                if ch not in self.ch_ignorado:
+                    if ch != '&':#TODO Fazer o tratamento do Tipo para os tipos especiais
+                        self.tipo = Tipo('!')
+                        tk = Token(tipo=self.tipo, lexema=ch, linha=self.linha, coluna=self.coluna)
+                        self.token.append(tk)
+                        print(tk)
+                    else:
+                        self.palavra.append(ch)
+                if ch == '\n':
+                    self.coluna = 0
+                    self.linha += 1
+            else:
+                self.palavra.append(ch)
+            if ch == '\t':
+                self.coluna += 5
+            else:
+                self.coluna += 1
