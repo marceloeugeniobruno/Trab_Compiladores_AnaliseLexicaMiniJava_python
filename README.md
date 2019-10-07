@@ -1,6 +1,6 @@
 # Trab_Compiladores_AnaliseLexicaMiniJava_python
 Este é apenas um trabalho academico de analise lexica se compiladores
-ainda tem muitos erros que tem que ser corrigidos. ao meu entendmento o código não está bom. tambem ainda não descrevi
+ainda tem muitos erros que tem que ser corrigidos. ao meu entendmento o código não está bom. tambem ainda nao descrevi
 o que faz cada bloco.
 
 
