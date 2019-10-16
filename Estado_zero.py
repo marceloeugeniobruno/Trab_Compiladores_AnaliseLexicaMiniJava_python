@@ -62,7 +62,6 @@ def Analisa_char(estado, ch):
         return 99
     elif estado < 3 and ch not in Chars_aceitos():
         return 3
-    elif estado < 4 and ch not in Chars_aceitos():
-        print('XXXXXXXXXXXXXXXXXXXXXXXXX')
+    elif estado < 5 and ch not in Chars_aceitos():
         return 3
     return estado

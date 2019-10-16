@@ -20,6 +20,7 @@ class Lexico:
         self.esp = [' ', '\n', '\t', '.', ',', '+', '-', '*', '(', ')', '{', '}', '[', ']', ';', '=', '<', '!']
         self.vai = False
         self.contador = 0
+        self.analisa() #inserido no dia 16/10/2019
 
     def get_lista(self):
         return self.li
@@ -29,9 +30,7 @@ class Lexico:
 
     def analisa(self):
         for ch in self.li:
-            print(f'Estado {self.estado} , char {ch}')
             self.estado = Analisa_char(self.estado, ch)
-            print(f'Estado {self.estado} , char {ch}')
             if ch == '/':
                 if self.estado == 4:
                     self.estado = 5
@@ -506,7 +505,6 @@ class Lexico:
             else:
                 if ch not in [' ', '\n', '\t']:
                     self.palavra.append(ch)
-                    print(self.palavra)
             # if de teste
             self.contador += 1
             self.coluna += 1
@@ -523,7 +521,7 @@ class Lexico:
 
 
 le = Lexico('teste.txt')
-le.analisa()
+#le.analisa()
 li = le.get_token()
 for i in li:
     print(f'{i} - {len(li)}')
