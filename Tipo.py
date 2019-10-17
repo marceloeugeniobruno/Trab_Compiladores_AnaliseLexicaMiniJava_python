@@ -39,3 +39,4 @@ class Tipo(Enum):
     SFALSE = "false"
     STHIS = "this"
     SNEW = "new"
+    SERRO = "erro"

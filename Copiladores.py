@@ -20,7 +20,7 @@ class Lexico:
         self.esp = [' ', '\n', '\t', '.', ',', '+', '-', '*', '(', ')', '{', '}', '[', ']', ';', '=', '<', '!']
         self.vai = False
         self.contador = 0
-        self.analisa() #inserido no dia 16/10/2019
+        self.analisa()#TODO: linha 23 implementados no dia 16/10/19
 
     def get_lista(self):
         return self.li
@@ -42,10 +42,14 @@ class Lexico:
                 self.estado = zero(ch)
             elif 1 < self.estado < 50:
                 if self.estado == 2:
-                    if Char_especiais(ch) > 0:
+                    if Char_especiais(ch) > 2:
+                        self.token.append(Token(Tipo('indentifier'), ''.join(self.palavra), self.linha,
+                                                self.coluna - len(self.palavra) + 1))
                         self.estado = Char_especiais(ch)
                     if ch == '' or ch == '\n' or ch == '\t':
                         self.estado = 900
+                    if self.estado == 3 and ch in [' ', '\n', '\t']:
+                        self.estado = 99
             elif 100 < self.estado < 300:
                 if 100 < self.estado < 108:
                     # verifica o lexema 'boolean'
@@ -469,7 +473,7 @@ class Lexico:
                         self.token.append(Token(Tipo('numero'), ''.join(self.palavra), self.linha, self.coluna - len(self.palavra) + 1))
                 if self.vai:
                     self.estado = Char_especiais(ch)
-                if 49 < self.estado < 66:
+                if 49 < self.estado < 100:
                     if self.estado == 50:
                         self.token.append(Token(Tipo('.'), ch, self.linha, self.coluna))
                     elif self.estado == 51:
@@ -505,7 +509,10 @@ class Lexico:
             else:
                 if ch not in [' ', '\n', '\t']:
                     self.palavra.append(ch)
-            # if de teste
+            if self.estado == 99:
+                self.token.append(Token(Tipo('erro'), ''.join(self.palavra), self.linha, self.coluna - len(self.palavra) + 1))
+                self.palavra.clear()
+                self.estado = 0
             self.contador += 1
             self.coluna += 1
             self.vai = False
@@ -517,11 +524,7 @@ class Lexico:
                     self.estado = 1
             if self.contador == len(self.li):
                 if ch not in [' ', '\n', '\t']:
-                    self.token.append(Token(Tipo('indentifier'), ''.join(self.palavra), self.linha, self.coluna - len(self.palavra) + 1))
-
-
-le = Lexico('teste.txt')
-#le.analisa()
-li = le.get_token()
-for i in li:
-    print(f'{i} - {len(li)}')
+                    if self.estado == 3:
+                        self.token.append(Token(Tipo('erro'), ''.join(self.palavra), self.linha, self.coluna - len(self.palavra) + 1))
+                    else:
+                        self.token.append(Token(Tipo('indentifier'), ''.join(self.palavra), self.linha, self.coluna - len(self.palavra) + 1))

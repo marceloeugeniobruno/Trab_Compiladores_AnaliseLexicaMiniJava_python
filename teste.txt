@@ -60,7 +60,7 @@ class BBS{
 	return 0 ;
     }
 
-    //@ Printing method
+    @P rinting method
 
     public int Print(){
 	int j ;
