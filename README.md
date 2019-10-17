@@ -8,7 +8,7 @@ Elaborado por: Marcelo Eugênio Bruno de Azevedo
 ---->	Arquivos e descrições
 -> Compiladores.py
 Principal arquivo do analisador léxico e onde está localizado a classe léxico
-Para execução é necessário passar o arquivo por parâmetro léxico(“nome do arquivo se tiver na mesma pasta”). E após rodar a função analisa(). isso é fácil resolver, basta colocar no final do construtor a chamada do procedimento self.analisa()
+Para execução é necessário passar o arquivo por parâmetro léxico(“nome do arquivo se tiver na mesma pasta”).
 Exitem duas funções que retornarão listas a get_token() que retornará a lista de todos os tokens encontrados no arquivo e a get_lista () que retornará a lista de todos os caracteres contidos no arquivo importado.
 O procedimento analisa() é o responsável por colocar na lista de tokens cada token encontrado do arquivo.
 No momento ainda tenho que resolver tratar os estados 3 e 99. E a último caractere da lista. No inicio verifica se o caractere está na lista de carcteres aceitos. Como ainda não tratei os erros, quando o erro ocorre nada mais é colocado na lista de tokens. 
