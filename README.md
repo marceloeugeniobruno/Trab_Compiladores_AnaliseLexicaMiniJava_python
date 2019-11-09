@@ -3,6 +3,19 @@ Este é apenas um trabalho academico de analise lexica se compiladores
 ainda tem muitos erros que tem que ser corrigidos. ao meu entendmento o código não está bom. tambem ainda nao descrevi
 o que faz cada bloco.
 
+#2 comit####
+Ainda estamos corrigindo os erros no analisador Lexico.
+o primeiro erro corrigido foi na linha 527. foi na atribuição do estado, foi equivocadamente colocado no estado 1, que acarretava em erro da proxima palavra
+o segundo erro que foi corrgdo foi nos nas entre as linhas 166 a 169 foi adicionada uma instrução
+
+if self.estado == 129:
+    self.estado = 906
+else:
+    self.estado = 907
+Tambem foi detectado um erro bem grave antes da atribuiçõa dos estados fins de cada palavra encontrada, quando a palavra encontrada se difere das palavras reservadas o programa faz bem sua fnção atribuuindo a um identificador, mas caso contrário se digitarmos as palavras 'c', 'cl', 'cla', 'clas' o programa coloca como o lexema class (que até dá a idéia de desevolver um interpretador que faz esse tipo de interpretação). e esse é o proóximo passo a ser corrigido.
+
+#######
+
 Este é um analisador lexico elaborado para a disciplina de compiladores.
 Elaborado por: Marcelo Eugênio Bruno de Azevedo
 ---->	Arquivos e descrições
