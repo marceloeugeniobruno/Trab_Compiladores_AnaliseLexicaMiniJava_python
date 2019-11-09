@@ -5,6 +5,9 @@ class Token:
         self.lexema = lexema
         self.linha = linha
         self.coluna = coluna
+        self.escopo = ''
+        self.valor = None
 
     def __str__(self):
-        return f'Tipo -> {self.tipo} Lexema -> {self.lexema} Linha -> {self.linha} Coluna -> {self.coluna}'
+        return f'Tipo -> {self.tipo} Lexema -> {self.lexema} Linha -> {self.linha} Coluna -> {self.coluna} ' \
+               f'Escopo -> {self.escopo} valor -> {self.valor}'

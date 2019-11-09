@@ -1,6 +1,6 @@
 from collections import deque
 from Compiladores.Chars_especiais import Char_especiais, espacos
-from Compiladores.Estado_zero import zero, Chars_aceitos, Analisa_char
+from Compiladores.Estado_zero import zero, Analisa_char
 from Compiladores.Tipo import Tipo
 from Compiladores.Token import Token
 
@@ -20,7 +20,7 @@ class Lexico:
         self.esp = [' ', '\n', '\t', '.', ',', '+', '-', '*', '(', ')', '{', '}', '[', ']', ';', '=', '<', '!']
         self.vai = False
         self.contador = 0
-        self.analisa()#TODO: linha 23 implementados no dia 16/10/19
+        self.analisa()
 
     def get_lista(self):
         return self.li
@@ -163,7 +163,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 907
+                            if self.estado == 129:
+                                self.estado = 906
+                            else:
+                                self.estado = 907
                         else:
                             self.estado = 2
                 elif 131 < self.estado < 136:
@@ -521,10 +524,12 @@ class Lexico:
                 self.linha += 1
                 if self.estado == 5:
                     self.palavra.clear()
-                    self.estado = 1
+                    self.estado = 0
             if self.contador == len(self.li):
                 if ch not in [' ', '\n', '\t']:
                     if self.estado == 3:
                         self.token.append(Token(Tipo('erro'), ''.join(self.palavra), self.linha, self.coluna - len(self.palavra) + 1))
                     else:
                         self.token.append(Token(Tipo('indentifier'), ''.join(self.palavra), self.linha, self.coluna - len(self.palavra) + 1))
+
+

@@ -1,16 +1,15 @@
-class  BubbleSort{
+class BubbleSort{
     public static void main(String[] a){
 	System.out.println(new BBS().Start(10));
     }
 }
-@
 
 
 // This class contains the array of integers and
 // methods to initialize, print and sort the array
 // using Bublesort
 class BBS{
-    
+
     int[] number ;
     int size ;
 
@@ -61,7 +60,8 @@ class BBS{
 	return 0 ;
     }
 
-    // Printing method
+    //@ Printing method
+
     public int Print(){
 	int j ;
 	j = 0 ;
@@ -71,7 +71,7 @@ class BBS{
 	}
 	return 0 ;
     }
-    
+
     // Initialize array of integers
     public int Init(int sz){
 	size = sz ;
@@ -88,7 +88,7 @@ class BBS{
 	number[8] = 19 ; 
 	number[9] = 5  ;
 	
-	return 0 ;	
+//	return 0 ;@
     }
 
-}
+@
