@@ -3,9 +3,15 @@ Este é apenas um trabalho academico de analise lexica se compiladores
 ainda tem muitos erros que tem que ser corrigidos. ao meu entendmento o código não está bom. tambem ainda nao descrevi
 o que faz cada bloco.
 
+
+3 atualização
+A principio foi corrigido os erro lexicos
+a
+
+
 #2 comit####
 Ainda estamos corrigindo os erros no analisador Lexico.
-o primeiro erro corrigido foi na linha 527. foi na atribuição do estado, foi equivocadamente colocado no estado 1, que acarretava em erro da proxima palavra
+o primeiro erro corrigido foi na linha XXX. foi na atribuição do estado, foi equivocadamente colocado no estado 1, que acarretava em erro da proxima palavra
 o segundo erro que foi corrgdo foi nos nas entre as linhas 166 a 169 foi adicionada uma instrução
 
 
