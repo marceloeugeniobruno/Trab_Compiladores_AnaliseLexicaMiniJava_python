@@ -19,6 +19,21 @@ class Sintatico:
         self.escopo.pop()
 
     def expression(self):
+        """
+Expression	::=	Expression ( "&&" | "<" | "+" | "-" | "*" ) Expression
+                Expression "[" Expression "]"
+                Expression "." "length"
+                Expression "." Identifier "(" ( Expression ( "," Expression )* )? ")"
+                <INTEGER_LITERAL>
+                "true"
+                "false"
+                Identifier
+                "this"
+                "new" "int" "[" Expression "]"
+                "new" Identifier "(" ")"
+                "!" Expression
+                "(" Expression ")"
+        """
         pass
 
     def statemant(self):
@@ -108,9 +123,25 @@ class Sintatico:
             else:
                 print('erro de atribuicao')
 
-        # TODO Verifica se FECHA CHAVES XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        # TODO Verifica a condição while --->   "while" "(" Expresion ")"  Statemant <---
         elif self.token[self.contador].tipo == Tipo.SWHILE:
-            pass
+            self.adiciona_ecopo(f'if_linha_{self.token[self.contador].linha}_Col_{self.token[self.contador].coluna}')
+            self.contador += 1
+            # TODO: VERIFICA se ABRE PARENTESES
+            if self.token[self.contador].tipo == Tipo.SABREPARENTESES:
+                self.contador += 1
+                # TODO: chamar a função Expresion
+                self.expression()
+                # TODO: VERIFICA se FECHA PARENTESES
+                if self.token[self.contador].tipo == Tipo.SFECHAPARENTESES:
+                    self.contador += 1
+                    self.statemant()
+                else:
+                    self.token[self.contador].escopo = self.escopo[len(self.escopo) - 1]
+                    print(f'ERRO Semantico: {self.token[self.contador]} || esperava-se um FECHA PARENTESES')
+            else:
+                self.token[self.contador].escopo = self.escopo[len(self.escopo) - 1]
+                print(f'ERRO Semantico: {self.token[self.contador]} || esperava-se um ABRE PARENTESES')
         elif self.token[self.contador].tipo == Tipo.SFECHACHAVES:
             pass
         else:

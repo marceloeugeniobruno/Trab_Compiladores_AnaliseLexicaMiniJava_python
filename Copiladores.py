@@ -70,7 +70,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 901
+                            if ''.join(self.palavra) == 'boolean':
+                                self.estado = 901
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 107 < self.estado < 113:
@@ -88,7 +91,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 902
+                            if ''.join(self.palavra) == 'class':
+                                self.estado = 902
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 112 < self.estado < 123:
@@ -108,7 +114,10 @@ class Lexico:
                         else:
                             if espacos(ch) != 2:
                                 self.vai = True
-                                self.estado = 903
+                                if ''.join(self.palavra) == 'else':
+                                    self.estado = 903
+                                else:
+                                    self.estado = 900
                             else:
                                 self.estado = 2
                     else:
@@ -126,8 +135,11 @@ class Lexico:
                             self.estado = 904
                         else:
                             if espacos(ch) != 2:
-                                self.vai = True
-                                self.estado = 904
+                                if ''.join(self.palavra) == 'extends':
+                                    self.vai = True
+                                    self.estado = 904
+                                else:
+                                    self.estado = 900
                             else:
                                 self.estado = 2
                 elif 122 < self.estado < 128:
@@ -145,7 +157,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 905
+                            if ''.join(self.palavra) == 'false':
+                                self.estado = 905
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 127 < self.estado < 132:
@@ -164,9 +179,15 @@ class Lexico:
                         if espacos(ch) != 2:
                             self.vai = True
                             if self.estado == 129:
-                                self.estado = 906
+                                if ''.join(self.palavra) == 'if':
+                                    self.estado = 906
+                                else:
+                                    self.estado = 900
                             else:
-                                self.estado = 907
+                                if ''.join(self.palavra) == 'int':
+                                    self.estado = 907
+                                else:
+                                    self.estado = 900
                         else:
                             self.estado = 2
                 elif 131 < self.estado < 136:
@@ -181,7 +202,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 908
+                            if ''.join(self.palavra) == 'main':
+                                self.estado = 908
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 135 < self.estado < 139:
@@ -194,7 +218,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 909
+                            if ''.join(self.palavra) == 'new':
+                                self.estado = 909
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 138 < self.estado < 145:
@@ -213,7 +240,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 910
+                            if ''.join(self.palavra) == 'public':
+                                self.estado = 910
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 144 < self.estado < 151:
@@ -232,7 +262,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 911
+                            if ''.join(self.palavra) == 'return':
+                                self.estado = 911
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 150 < self.estado < 157:
@@ -251,7 +284,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 912
+                            if ''.join(self.palavra) == 'static':
+                                self.estado = 912
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 156 < self.estado < 180:
@@ -274,7 +310,10 @@ class Lexico:
                         else:
                             if espacos(ch) != 2:
                                 self.vai = True
-                                self.estado = 913
+                                if ''.join(self.palavra) == 'String':
+                                    self.estado = 913
+                                else:
+                                    self.estado = 900
                             else:
                                 self.estado = 2
                     elif 162 < self.estado < 180:
@@ -315,7 +354,10 @@ class Lexico:
                         else:
                             if espacos(ch) != 2:
                                 self.vai = True
-                                self.estado = 914
+                                if ''.join(self.palavra) == 'System.out.println':
+                                    self.estado = 914
+                                else:
+                                    self.estado = 900
                             else:
                                 self.estado = 2
                 elif 179 < self.estado < 187:
@@ -335,7 +377,10 @@ class Lexico:
                             self.estado = espacos(ch)
                             if espacos(ch) != 2:
                                 self.vai = True
-                                self.estado = 915
+                                if ''.join(self.palavra) == 'this':
+                                    self.estado = 915
+                                else:
+                                    self.estado = 900
                             else:
                                 self.estado = 2
                     elif 183 < self.estado < 187:
@@ -348,7 +393,10 @@ class Lexico:
                         else:
                             if espacos(ch) != 2:
                                 self.vai = True
-                                self.estado = 916
+                                if ''.join(self.palavra) == 'true':
+                                    self.estado = 916
+                                else:
+                                    self.estado = 900
                             else:
                                 self.estado = 2
                 elif 186 < self.estado < 191:
@@ -363,7 +411,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 917
+                            if ''.join(self.palavra) == 'void':
+                                self.estado = 917
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 190 < self.estado < 196:
@@ -380,7 +431,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 918
+                            if ''.join(self.palavra) == 'while':
+                                self.estado = 918
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
                 elif 195 < self.estado < 198:
@@ -411,7 +465,10 @@ class Lexico:
                     else:
                         if espacos(ch) != 2:
                             self.vai = True
-                            self.estado = 920
+                            if ''.join(self.palavra) == 'length':
+                                self.estado = 920
+                            else:
+                                self.estado = 900
                         else:
                             self.estado = 2
             elif self.estado == 1:
